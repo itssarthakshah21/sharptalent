@@ -1,0 +1,42 @@
+<header class="bg-white shadow sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <img src="assets/images/logo.jpg" alt="Logo" class="h-10" />
+  
+      <nav class="hidden md:flex gap-8 text-gray-700 text-sm font-semibold">
+        <a
+            role="button"
+            (click)="scrollToSection('home')"
+            [ngClass]="{ 'text-blue-600 font-bold': currentRoute === '/' && activeSection === 'home' }"
+        >Home</a>
+        <a
+        role="button"
+          (click)="scrollToSection('about')"
+          [ngClass]="{ 'text-blue-600 font-bold': activeSection === 'about' }"
+        >About Us</a>
+  
+        <a
+        role="button"
+          (click)="scrollToSection('services')"
+          [ngClass]="{ 'text-blue-600 font-bold': activeSection === 'services' }"
+        >Services</a>
+  
+        <a
+        role="button"
+          (click)="scrollToSection('whychoose')"
+          [ngClass]="{ 'text-blue-600 font-bold': activeSection === 'whychoose' }"
+        >Why Sharp</a>
+  
+        <a
+        role="button"
+          (click)="scrollToSection('contact')"
+          [ngClass]="{ 'text-blue-600 font-bold': activeSection === 'contact' }"
+        >Contact</a>
+  
+        <a
+          routerLink="/careers"
+          [ngClass]="{ 'text-blue-600 font-bold': currentRoute === '/careers' }"
+        >Careers</a>
+      </nav>
+    </div>
+  </header>
+  

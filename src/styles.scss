@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+  }
+
+  .input {
+    @apply w-full p-3 border rounded focus:outline-none focus:ring focus:ring-blue-300;
+  }
+  
+  
+  

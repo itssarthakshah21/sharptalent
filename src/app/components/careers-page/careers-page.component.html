@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<section class="py-20 bg-gray-100">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-10 text-center text-gray-800">Current Openings</h2>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div *ngFor="let job of jobs" class="bg-white p-6 rounded shadow-md border border-gray-200">
+        <h3 class="text-xl font-semibold mb-2 text-blue-700">{{ job.title }}</h3>
+        <p class="text-sm text-gray-600 mb-1"><strong>Location:</strong> {{ job.location }}</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Package:</strong> {{ job.package }}</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Experience:</strong> {{ job.experience }}</p>
+        <p class="text-sm text-gray-600"><strong>Deadline:</strong> {{ job.deadline }}</p>
+        <a
+          role="button"
+          (click)="viewJobDetails(job)"
+          class="mt-4 inline-block text-blue-600 font-semibold hover:underline cursor-pointer"
+        >
+          View Details →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Popup -->
+<div *ngIf="showModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 max-w-xl w-full shadow-lg relative animate-fadeIn overflow-y-auto max-h-[90vh]">
+  
+      <!-- Close Button -->
+      <button
+        class="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-xl font-bold"
+        (click)="closeModal()"
+      >
+        ×
+      </button>
+  
+      <!-- Job Details Content -->
+      <h2 class="text-3xl font-bold mb-2 text-blue-700">{{ selectedJob?.title }}</h2>
+      <p class="mb-1 text-sm text-gray-600"><strong>Location:</strong> {{ selectedJob?.location }}</p>
+      <p class="mb-1 text-sm text-gray-600"><strong>Package:</strong> {{ selectedJob?.package }}</p>
+      <p class="mb-1 text-sm text-gray-600"><strong>Experience Required:</strong> {{ selectedJob?.experience }}</p>
+      <p class="mb-4 text-sm text-gray-600"><strong>Application Deadline:</strong> {{ selectedJob?.deadline }}</p>
+  
+      <hr class="my-4" />
+  
+      <div class="text-gray-700 space-y-3 text-sm">
+        <p>{{ selectedJob?.description }}</p>
+  
+        <div *ngIf="selectedJob?.responsibilities?.length">
+          <h4 class="font-semibold mt-4">Responsibilities:</h4>
+          <ul class="list-disc ml-5 mt-1">
+            <li *ngFor="let item of selectedJob.responsibilities">{{ item }}</li>
+          </ul>
+        </div>
+  
+        <div *ngIf="selectedJob?.requirements?.length">
+          <h4 class="font-semibold mt-4">Requirements:</h4>
+          <ul class="list-disc ml-5 mt-1">
+            <li *ngFor="let req of selectedJob.requirements">{{ req }}</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Apply Button -->
+      <div class="text-center mt-6">
+        <div class="text-center mt-6 z-10 relative">
+            <button
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded inline-block"
+                (click)="openApplyInNewTab()"
+                >
+                Apply Now
+            </button>
+
+          </div>                    
+      </div>
+    </div>
+  </div>
+  
+
+<app-footer></app-footer>
